@@ -15,17 +15,17 @@ content-type: application/json
 }
 
 ### Get User
-GET http://localhost:3000/users/34
+GET http://localhost:3000/users/2
 
 ### Update User
-PUT http://localhost:3000/users/34
+PUT http://localhost:3000/users/3
 content-type: application/json
 
 {
-  "name": "John Doe",
+  "name": "John Doe 2",
   "email": "john.doe@example.com",
-  "phoneNumber": "+911234567890"
+  "phoneNumber": "+911234567891"
 }
 
 ### Delete User
-DELETE http://localhost:3000/users/34
+DELETE http://localhost:3000/users/3
