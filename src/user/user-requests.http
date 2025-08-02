@@ -1,0 +1,31 @@
+#User Module Requests
+
+### Get User List
+GET http://localhost:3000/users
+
+### Create User
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "+911234567890",
+  "password": "securepassword"
+}
+
+### Get User
+GET http://localhost:3000/users/34
+
+### Update User
+PUT http://localhost:3000/users/34
+content-type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "+911234567890"
+}
+
+### Delete User
+DELETE http://localhost:3000/users/34
