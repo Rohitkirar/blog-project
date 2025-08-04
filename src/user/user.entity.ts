@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { Entity, Column, PrimaryGeneratedColumn, Timestamp } from "typeorm";
 @Entity()
 export class User{
@@ -9,6 +10,7 @@ export class User{
  phoneNumber: string;
  @Column()
  email: string;
+ // @Exclude() // if you are using global interceptor to excude field from response we use this in entity
  @Column()
  password: string;
 }

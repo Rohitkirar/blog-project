@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
+import { CreateUserDto } from './dto/request/create-user.dto';
+import { UpdateUserDto } from './dto/request/update-user.dto';
 import { UserService } from './user.service';
-import { stringify } from 'querystring';
+import { UserDto } from './dto/response/user.dto'
+import { Serialize, SerializeInterceptor } from 'src/interceptor/serialize.interceptor';
+// import { ClassSerializerInterceptor } from 
 
 @Controller('users')
+@Serialize(UserDto) // controller level use for all function inside
 export class UserController {
  constructor(private userService: UserService){}
   @Get()
@@ -13,8 +16,14 @@ export class UserController {
   }
  
   @Get("/:id")
-  getUserById(@Param("id") id: string){
-   return this.userService.findOne(parseInt(id));
+  // @UseInterceptors(ClassSerializerInterceptor) // nest recommended interceptor
+  // @UseInterceptors(new SerializeInterceptor(UserDto))
+  // @Serialize(UserDto) // function level use if separate dto use
+  async getUserById(@Param("id") id: string){
+   const user = await this.userService.findOne(parseInt(id));
+   if(!user)
+     throw new NotFoundException('User not found!');
+   return user;
   }
 
  @Post()

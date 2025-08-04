@@ -15,10 +15,10 @@ content-type: application/json
 }
 
 ### Get User
-GET http://localhost:3000/users/2
+GET http://localhost:3000/users/5
 
 ### Update User
-PUT http://localhost:3000/users/3
+PUT http://localhost:3000/users/5
 content-type: application/json
 
 {
@@ -28,4 +28,4 @@ content-type: application/json
 }
 
 ### Delete User
-DELETE http://localhost:3000/users/3
+DELETE http://localhost:3000/users/2
