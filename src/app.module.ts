@@ -11,8 +11,12 @@ import { User } from './user/user.entity';
    UserModule, 
    AuthModule, 
    TypeOrmModule.forRoot({
-   type: "sqlite",
-   database: "db.sqlite",
+   type: "mysql",
+   host: "127.0.0.1",
+   port: 3306,
+   database: "portfolio_db",
+   username: "root",
+   password: "",
    entities: [User],
    synchronize: true
   }) 

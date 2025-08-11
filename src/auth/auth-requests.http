@@ -1,12 +1,23 @@
 # Auth Requests
 
+### Register
+POST http://localhost:3000/auth/register
+content-type: application/json
+
+{
+  "email": "john.doe@gmail.com",
+  "name": "John Doe",
+  "phoneNumber": "+911234567890",
+  "password": "John@Doe123"
+}
+
 ### Login
 POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-  "email": "john.doe@example.com",
-  "password": "securepassword"
+  "email": "john.doe@gmail.com",
+  "password": "John@Doe123"
 }
 
 ### Logout

@@ -9,6 +9,9 @@ export class UserService {
  find(){
   return this.repo.find();
  }
+ findOneByEmail(email: string){
+  return this.repo.findOne({where:{email}});
+ }
  
  findOne(id: number){
   return this.repo.findOne({where: {id}});

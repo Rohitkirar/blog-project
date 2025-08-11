@@ -1,7 +1,7 @@
 #User Module Requests
 
 ### Get User List
-GET http://localhost:3000/users
+GET http://localhost:3000/users?email=sddsf
 
 ### Create User
 POST http://localhost:3000/users
@@ -9,7 +9,7 @@ content-type: application/json
 
 {
   "name": "John Doe",
-  "email": "john.doe@example.com",
+  "email": "john.doe1@example.com",
   "phoneNumber": "+911234567890",
   "password": "securepassword"
 }
