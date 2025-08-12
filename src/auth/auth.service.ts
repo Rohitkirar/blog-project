@@ -2,7 +2,6 @@ import { BadRequestException, Injectable, NotFoundException, Session } from '@ne
 import { UserService } from 'src/user/user.service';
 import { randomBytes ,scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
-import { ValidationError } from 'class-validator';
 import { RegisterDto } from './dto/request/register.dto';
 import { User } from 'src/user/user.entity';
 

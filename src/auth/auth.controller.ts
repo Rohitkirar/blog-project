@@ -1,9 +1,13 @@
-import { Controller, Post, Body, Session, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Get, Body, Session, BadRequestException, UseGuards } from '@nestjs/common';
 import { LoginDto } from './dto/request/login.dto';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/request/register.dto';
 import { Serialize } from 'src/interceptor/serialize.interceptor';
 import { UserAuthDto } from './dto/response/user-auth.dto';
+import { User } from 'src/user/user.entity';
+import { CurrentUser } from 'src/user/decorator/current-user.decorator';
+import { UserDetailDto } from './dto/response/user-detail.dto';
+import { AuthGuard } from 'src/guard/auth.guard';
 
 
 @Controller('auth')
@@ -36,7 +40,15 @@ constructor(
   return user;
  }
 
+ @Get('user')
+ @Serialize(UserDetailDto)
+ @UseGuards(AuthGuard)
+ authUser(@CurrentUser() user: User){
+  return user;
+ }
+
  @Post('logout')
+ @UseGuards(AuthGuard)
  logout(@Session() session: any){
   session.userId = null;
   return { message: "logout successfully"};

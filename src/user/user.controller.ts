@@ -1,13 +1,14 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dto/request/create-user.dto';
 import { UpdateUserDto } from './dto/request/update-user.dto';
 import { UserService } from './user.service';
 import { UserDto } from './dto/response/user.dto'
-import { Serialize, SerializeInterceptor } from 'src/interceptor/serialize.interceptor';
-// import { ClassSerializerInterceptor } from 
+import { Serialize } from 'src/interceptor/serialize.interceptor';
+import { AuthGuard } from 'src/guard/auth.guard';
 
 @Controller('users')
 @Serialize(UserDto) // controller level use for all function inside
+@UseGuards(AuthGuard)
 export class UserController {
  constructor(private userService: UserService){}
   @Get()

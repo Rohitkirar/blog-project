@@ -20,5 +20,9 @@ content-type: application/json
   "password": "John@Doe123"
 }
 
+### User Details
+GET http://localhost:3000/auth/user
+content-type: application/json
+
 ### Logout
 POST http://localhost:3000/auth/logout
