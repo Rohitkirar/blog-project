@@ -13,8 +13,8 @@ export class UserDto{
  createdAt: Date;
  @Expose()
  updatedAt: Date;
- @Expose()
- deletedAt: Date;
+ // @Expose()
+ // deletedAt: Date;
  @Expose()
  @Transform(({ obj }) => obj.posts)
  post: Post[];

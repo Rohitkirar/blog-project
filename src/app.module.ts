@@ -31,6 +31,7 @@ import { DataSourceOptions } from 'typeorm';
      };
     }
    }),
+  // without env configuration
   //  TypeOrmModule.forRoot({
   //  type: "mysql",
   //  host: "127.0.0.1",

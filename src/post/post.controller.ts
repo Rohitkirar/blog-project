@@ -1,4 +1,4 @@
-import { Injectable, Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, UseGuards } from '@nestjs/common';
+import { Injectable, Controller, Get, Post, Put, Delete, Param, Body,Query, NotFoundException, UseGuards } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/request/create-post.dto';
 import { UpdatePostDto } from './dto/request/update-post.dto';
@@ -7,6 +7,7 @@ import { PostDto } from './dto/response/post.dto';
 import { CurrentUser } from 'src/user/decorator/current-user.decorator';
 import { User } from 'src/user/user.entity';
 import { AuthGuard } from 'src/guard/auth.guard';
+import { SearchPostDto } from './dto/request/search-post.dto';
 
 @Injectable()
 @Serialize(PostDto)
@@ -16,8 +17,9 @@ export class PostController {
  constructor(private postService: PostService){}
 
  @Get()
- index(){
-  return this.postService.find();
+ index(@Query() dto: SearchPostDto){
+  
+  return this.postService.searchPosts(dto);
  }
 
  @Get("/:id")

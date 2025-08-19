@@ -4,12 +4,24 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/user/user.entity';
 import { AuthGuard } from 'src/guard/auth.guard';
+import { SearchPostDto } from './dto/request/search-post.dto';
 
 @Injectable()
 @UseGuards(AuthGuard)
 export class PostService {
  constructor(@InjectRepository(Post) private repo: Repository<Post>){}
  
+ searchPosts({ search, startDate, endDate}: SearchPostDto){
+  const query = this.repo.createQueryBuilder("post").innerJoinAndSelect("post.user", "user");
+  if(search)
+   query.andWhere("post.title LIKE :search", {search: `%${search}%`});
+  if(startDate)
+   query.andWhere("post.createdAt >= :startDate", {startDate});
+  if(endDate)
+   query.andWhere("post.createdAt <= :endDate", {endDate});
+  return query.orderBy("post.id", "DESC").getMany();
+ }
+
  find(){
   return this.repo.find();
  }
