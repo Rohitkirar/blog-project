@@ -9,6 +9,7 @@ import { User } from './user/user.entity';
 import { Post } from './post/post.entity';
 import { PostModule } from './post/post.module';
 import { DataSourceOptions } from 'typeorm';
+import { AppDataSource } from './data-source';
 
 @Module({
   imports: [
@@ -16,21 +17,22 @@ import { DataSourceOptions } from 'typeorm';
     isGlobal: true,
     envFilePath: '.env'
    }),
-   TypeOrmModule.forRootAsync({
-    inject: [ConfigService],
-    useFactory: (config: ConfigService):TypeOrmModuleOptions  => {
-     return {
-       type: "mysql",
-       host: config.getOrThrow("DB_HOST"),
-       port: config.getOrThrow("DB_PORT"),
-       database: config.getOrThrow("DB_DATABASE"),
-       username:  config.getOrThrow("DB_USERNAME"),
-       password: config.getOrThrow<string>("DB_PASSWORD"),
-       synchronize: true,
-       entities: [User, Post]
-     };
-    }
-   }),
+   TypeOrmModule.forRoot(AppDataSource.options),
+   // TypeOrmModule.forRootAsync({
+   //  inject: [ConfigService],
+   //  useFactory: (config: ConfigService):TypeOrmModuleOptions  => {
+   //   return {
+   //     type: "mysql",
+   //     host: config.getOrThrow("DB_HOST"),
+   //     port: config.getOrThrow("DB_PORT"),
+   //     database: config.getOrThrow("DB_DATABASE"),
+   //     username:  config.getOrThrow("DB_USERNAME"),
+   //     password: config.getOrThrow<string>("DB_PASSWORD"),
+   //     synchronize: true,
+   //     entities: [User, Post]
+   //   };
+   //  }
+   // }),
   // without env configuration
   //  TypeOrmModule.forRoot({
   //  type: "mysql",

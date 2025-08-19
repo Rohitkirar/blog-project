@@ -1,6 +1,6 @@
 import { } from "class-transformer";
 import { timestamp } from "rxjs";
-import { User } from "src/user/user.entity";
+import { User } from "../user/user.entity";
 import { Entity, Column, PrimaryGeneratedColumn, Timestamp, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne } from "typeorm";
 
 @Entity()

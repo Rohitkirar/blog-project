@@ -1,5 +1,5 @@
 import { Exclude, Expose } from "class-transformer";
-import { Post } from "src/post/post.entity";
+import { Post } from "../post/post.entity";
 import { PostModule } from "src/post/post.module";
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from "typeorm";
 @Entity()
