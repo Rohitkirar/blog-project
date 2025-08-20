@@ -26,3 +26,19 @@ content-type: application/json
 
 ### Logout
 POST http://localhost:3000/auth/logout
+
+
+### API AUTH ROUTES
+
+### login api
+POST http://localhost:3000/auth/api/login
+content-type: application/json
+
+{
+  "email": "john.doe@gmail.com",
+  "password": "John@Doe123"
+}
+
+### login api
+GET http://localhost:3000/auth/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiam9obi5kb2VAZ21haWwuY29tIiwiaWF0IjoxNzU1NjgwNTE3LCJleHAiOjE3NTU2ODA1Nzd9.mmUbDsROnYZlU1EXtwEqoU7bYEmtRJWQx7TSHj-oUB4

@@ -22,7 +22,7 @@ import { CurrentUserMiddleware } from './middleware/current-user.middleware';
 })
 export class UserModule {
  // register middleware for all routes to add user object if login
- configure(consumer: MiddlewareConsumer){
-  consumer.apply(CurrentUserMiddleware).forRoutes("*");
- }
+ // configure(consumer: MiddlewareConsumer){
+ //  consumer.apply(CurrentUserMiddleware).forRoutes("*");
+ // }
 }
